@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: risk-copilot-v1-db
+    environment:
+      POSTGRES_USER: risk
+      POSTGRES_PASSWORD: risk
+      POSTGRES_DB: risk_copilot
+    ports:
+      - "5433:5432"
+    volumes:
+      - risk_copilot_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U risk -d risk_copilot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  risk_copilot_pgdata:
