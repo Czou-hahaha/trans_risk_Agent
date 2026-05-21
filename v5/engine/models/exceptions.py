@@ -1,0 +1,37 @@
+"""Shared exceptions for skills and tools."""
+
+
+class MetricMonitorError(Exception):
+    """Base error for metric monitor."""
+
+
+class MetricDataNotFoundError(MetricMonitorError):
+    """No metric observations for the requested period."""
+
+
+class MetricQueryError(MetricMonitorError):
+    """Database query failed for metrics."""
+
+
+class DimensionContributionError(Exception):
+    """Base error for dimension contribution."""
+
+
+class BreakdownDataNotFoundError(DimensionContributionError):
+    """No breakdown rows for the requested period/dimension."""
+
+
+class BreakdownQueryError(DimensionContributionError):
+    """Database query failed for breakdowns."""
+
+
+class StrategyImpactError(Exception):
+    """Base error for strategy impact analysis."""
+
+
+class StrategyDataNotFoundError(StrategyImpactError):
+    """No strategy metric observations for the requested window."""
+
+
+class StrategyQueryError(StrategyImpactError):
+    """Database query failed for strategy metrics."""
